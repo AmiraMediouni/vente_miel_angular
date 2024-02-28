@@ -1,0 +1,74 @@
+<div class="container  mt-5">
+    <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
+    
+        <ng-container matColumnDef="Id">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="Nom">
+          <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nom}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="Description">
+          <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.description}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="Prix">
+          <mat-header-cell *matHeaderCellDef> Prix </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.prix}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Quantité">
+            <mat-header-cell *matHeaderCellDef> Quantité </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.quantite}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="Date_Ajout">
+            <mat-header-cell *matHeaderCellDef> Date_Ajout </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.date_ajout}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Type">
+            <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.type}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="Texture">
+            <mat-header-cell *matHeaderCellDef> Texture </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.texture}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Images">
+            <mat-header-cell *matHeaderCellDef> Images </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <button mat-icon-button color="primary" (click)="showImages(element)" >
+                <mat-icon>images</mat-icon>
+              </button>  
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="Edit">
+            <mat-header-cell *matHeaderCellDef> Modifier </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button mat-icon-button color="primary"  (click)="editProductDetails(element.id)">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+            </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="Delete">
+            <mat-header-cell *matHeaderCellDef> Supprimer </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button mat-icon-button color="warn" (click)="deleteProduct(element.id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+            </mat-cell>
+            
+          </ng-container>
+      
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </table>   
+</div>
+

@@ -1,0 +1,22 @@
+
+<mat-toolbar color="primary">
+ <!-- <mat-toolbar-row>
+    <span>Vente Miel</span>
+    <span class="space-buttons"></span>
+    <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Logout</button>
+   
+  </mat-toolbar-row>-->
+
+  <mat-toolbar-row>
+    <button mat-raised-button color="primary" routerLink="/">
+      Accueil
+    </button>
+    <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/addNewProduct">
+      Ajouter Produit
+    </button>
+    <button *ngIf="isAdmin()" mat-raised-button color="primary" routerLink="/listProducts">
+      Liste Produits
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>

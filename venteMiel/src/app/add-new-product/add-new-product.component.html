@@ -1,0 +1,71 @@
+<div class="container mt-5">
+    <div class="card p-2">
+        <h1 *ngIf="isNewProduct">Ajouter produit</h1>
+        <h1 *ngIf="!isNewProduct">Modifier produit</h1>
+        <div class="row">
+            <div class="col-6">
+                <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Nom</mat-label>
+                        <input matInput placeholder="entrer le nom du produit" [(ngModel)]="produit.nom" name="nom">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Description</mat-label>
+                        <input matInput placeholder="entrez la description du produit" [(ngModel)]="produit.description" name="description">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Qantité</mat-label>
+                        <input matInput placeholder="entrez la qantité du produit" [(ngModel)]="produit.quantite" name="quantite">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Prix</mat-label>
+                        <input matInput placeholder="entrez le prix du produit" [(ngModel)]="produit.prix" name="prix">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Type</mat-label>
+                        <input matInput placeholder="entrez le type du produit" [(ngModel)]="produit.type" name="type">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>choisissez la texture du produit</mat-label>
+                        <mat-select [(ngModel)]="produit.texture" name="texture">
+                          <mat-option value="LIQUIDE">Liquide</mat-option>
+                          <mat-option value="CRISTALLISE">Cristallisé</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Date d'ajout</mat-label>
+                        <input matInput placeholder="entrez la date d'ajout du produit" [(ngModel)]="produit.date_ajout" name="date_ajout">
+                    </mat-form-field>
+                    <div align="end" >
+                        <button mat-raised-button color="warn" class="me-2">Annuler</button>
+                        <button type="submit" mat-raised-button color="accent">Enregistrer</button>
+                    </div>  
+                </form>                
+            </div>
+
+            <div class="col-6">
+                <div>
+                    <input type="file" multiple value="select" #selectFile
+                    (change)="onFileSelected($event)">
+                </div>
+                <div class="mt-5">
+                    <div class="row">
+                        <mat-grid-list cols="2" rowHeight="1:1">
+                            <mat-grid-tile *ngFor="let file of produit.imageProduit; let i =index">
+                                <div style="position: relative;">
+                                    <span class="btn-remove-image" (click)="removeImage(i)">x</span>
+                                    <img [src]="file.url" width="200px" height="200px">
+                                </div>
+                            </mat-grid-tile>
+                          </mat-grid-list>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
