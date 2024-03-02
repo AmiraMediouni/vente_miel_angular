@@ -31,6 +31,8 @@ import { ShowProductImagesComponent } from './show-product-images/show-product-i
 import {MatDialogModule} from '@angular/material/dialog';
 import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 
 
@@ -49,7 +51,9 @@ import { ProductViewDetailsComponent } from './product-view-details/product-view
     ListProductsComponent,
     ShowProductImagesComponent,
     BuyProductComponent,
-    ProductViewDetailsComponent
+    ProductViewDetailsComponent,
+    OrderConfirmationComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

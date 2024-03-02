@@ -1,1 +1,54 @@
-<p>buy-product works!</p>
+<div class="container mt-5">
+    <div class="card p-3">
+        <div class="row">
+            <div class="col-6">
+                <!--<form #orderForm="ngForm" (ngSubmit)="placeOrder(orderForm)">-->
+                    <form #orderForm="ngForm">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Nom</mat-label>
+                        <input matInput placeholder="entrez votre nom" [(ngModel)]="orderDetails.fullName" name="fullName">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Adresse</mat-label>
+                        <input matInput placeholder="entrez votre addresse" [(ngModel)]="orderDetails.fullAddress" name="fullAddress">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Numéro de téléphone</mat-label>
+                        <input matInput placeholder="entrez votre numéro  de téléphone" [(ngModel)]="orderDetails.contactNumber" name="contactNumber">
+                    </mat-form-field>
+                    <div align="right" >
+                        <button type="submit" mat-raised-button color="accent" (click)="placeOrder(orderForm)">Acheter</button>
+                    </div>  
+                </form>
+            </div>
+            <div class="col-6">
+                <table class="table">
+                    <thead class="thead">
+                      <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tbody">
+                      <tr *ngFor="let product of productDetails">
+                        <td>{{product.nom}}</td>
+                        <td>{{product.prix}}</td>
+                        <td><input #quantity (change)= "onQuantityChanged(quantity.value,product.id)" placeholder="quantité" [ngModel]="getQuantityForProduct(product.id)" name="quantity"></td>
+                        <td>{{getCalculatedTotal(product.id,product.prix)}}</td>
+                      </tr>
+                      <tr >
+                        <td></td>
+                        <td></td>
+                        <td>TOTAL : </td>
+                        <td>{{getCalculatedAllTotal()}}</td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+            </div>
+            
+        </div>
+    </div>
+</div>

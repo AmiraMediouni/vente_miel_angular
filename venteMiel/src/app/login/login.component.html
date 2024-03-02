@@ -1,25 +1,18 @@
 <div class="container mt-5">
     <div class="card" style="padding: 20px;">
         <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-            <input type="text"
-            ngModel
-            name="email"
-            id="email"
-            placeholder="Entrez votre nom d'utilisateur"
-            class="form-control mb-3"
-            >
+            <input type="text" ngModel name="email" id="email" placeholder="Entrez votre nom d'utilisateur"
+                class="form-control mb-3">
 
-            <input type="password"
-            ngModel
-            name="password"
-            id="password"
-            placeholder="Entrez votre mot de passe"
-            class="form-control mb-3"
-            >
+            <input type="password" ngModel name="password" id="password" placeholder="Entrez votre mot de passe"
+                class="form-control mb-3">
 
-            <input type="submit"
-            value="Se connecter"
-            class="btn btn-outline-primary form-control rounded-0">
+            <button mat-raised-button color="primary" type="submit" class="w-100">Se connecter</button>
+
         </form>
-    </div>
 
+    </div>
+    <div class="text-center">
+        <br>
+        <button mat-raised-button color="warn" type="button" class="w-20" (click)="register()">S'inscrire</button>
+    </div>

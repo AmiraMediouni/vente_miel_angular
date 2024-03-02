@@ -37,4 +37,8 @@ console.log(response);
       }
     );
   }
+
+  register(){
+    this.router.navigate(['register'])
+  }
 }
