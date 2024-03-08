@@ -1,39 +1,42 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-6">
-            <div class="card image-container p-3" >
+            <div class="card image-container p-3">
                 <img [src]="product.imageProduit[selectedProductIndex].url" class="zoom-image">
             </div>
             <div class="mt-2">
-                <mat-grid-list cols="3" >
+                <mat-grid-list cols="3">
                     <mat-grid-tile *ngFor="let file of product.imageProduit;let i=index" (click)="changeIndex(i)">
                         <img [src]="file.url" width="150px" height="150px">
                     </mat-grid-tile>
-                  </mat-grid-list>
+                </mat-grid-list>
             </div>
-            
+
         </div>
         <div class="col-6">
             <div class="product-information">
-               <div class="mt-3">
-                <h2>{{product.nom}}</h2>
-               </div> 
-               <div class="mt-3">
-                Description:<br>
-                {{product.description}}
-               </div> 
-               <div class="mt-3">
-               <b> Prix:<br>
-                {{product.prix}}</b>
-               </div> 
-               <div class="mt-5 text-center">
-                <button mat-raised-button color="warn" (click)="buyProduct(product.id)">
-                    Acheter
-                  </button>
-               </div>
+                <div class="mt-3">
+                    <h2>{{product.nom}}</h2>
+                </div>
+                <div class="mt-3">
+                    Description:<br>
+                    {{product.description}}
+                </div>
+                <div class="mt-3">
+                    <b> Prix:<br>
+                        {{product.prix}}</b>
+                </div>
+                <div class="mt-5 text-center">
+                    <button mat-raised-button color="warn" (click)="buyProduct(product.id)">
+                        Acheter
+                    </button>
+                    <button class="m-2" mat-raised-button  (click)="addToCart(product.id)">
+                        Ajouter à la carte
+                    </button>
+                </div>
             </div>
-            
+
         </div>
     </div>
-    
+
 </div>

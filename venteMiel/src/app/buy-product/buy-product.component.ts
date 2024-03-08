@@ -24,7 +24,7 @@ export class BuyProductComponent implements OnInit {
     this.productDetails= this.activatedRoute.snapshot.data['productDetails']
     this.productDetails.forEach(
       x=>this.orderDetails.commandeQuantiteList.push(
-        {produitId:x.id,quantite:5}
+        {produitId:x.id,quantite:1}
       )
     )
     console.log(this.productDetails);
@@ -33,22 +33,25 @@ export class BuyProductComponent implements OnInit {
     
   }
   public placeOrder(orderForm:NgForm){
+    console.log("orderDetails")
     console.log(this.orderDetails);
+    console.log("productDetails")
     console.log(this.productDetails);
     
     this.productService.placeOrder(this.orderDetails).subscribe(
       (resp)=>{
+               
         console.log(resp);
-        orderForm.reset()
-        this.router.navigate(["/orderConfirm"])
+        console.log(this.orderDetails);
         
+    //    orderForm.reset()        
       },
       (err)=>{
         console.log(err);
         
       }
     )
-    this.router.navigate(["/orderConfirm"])
+   // this.router.navigate(["/orderConfirm"])
   }
   getQuantityForProduct(id:any){
     const filteredProduct=this.orderDetails.commandeQuantiteList.filter(

@@ -12,10 +12,10 @@ import { ProductService } from '../_services/product.service';
 export class ProductViewDetailsComponent implements OnInit{
   selectedProductIndex=0;
   product!: Produit;
-  constructor(private activtedRoute:ActivatedRoute, private router:Router){}
+  constructor(private activtedRoute:ActivatedRoute, private router:Router,private productService:ProductService){}
   ngOnInit(): void {
     this.product=this.activtedRoute.snapshot.data['product']
-    console.log(this.product);
+    
     
   }
   changeIndex(i:any){
@@ -25,7 +25,18 @@ export class ProductViewDetailsComponent implements OnInit{
     this.router.navigate(['/buyProduct',{
       isSingleProductCheckout:true,id:productId
     }])
-    
+  }
+  addToCart(productId:number){
 
+    console.log(this.product);
+    this.productService.addToCart(productId).subscribe(
+      (response)=>{
+        console.log(response);
+        
+      },(error)=>{
+        console.log(error);
+        
+      }
+    );
   }
 }

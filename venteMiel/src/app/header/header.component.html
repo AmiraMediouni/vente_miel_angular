@@ -1,4 +1,4 @@
-
+<!--
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Vente Miel</a>
@@ -11,6 +11,15 @@
           <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/about">A propos</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['CLIENT'])" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/cart">Cart</a>
+        </li>
+        <li *ngIf="userService.roleMatch(['ADMIN'])" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/orders">Commandes</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/admin"
           *ngIf="userService.roleMatch(['ADMIN'])"
           >Admin Dashboard</a>
@@ -20,10 +29,104 @@
           *ngIf="userService.roleMatch(['CLIENT'])"
           >Dashboard Client</a>
         </li>
-       
+          
+          <mat-toolbar-row>
+            <button mat-raised-button color="primary" routerLink="/">
+              Accueil
+            </button>
+            <button  mat-raised-button color="primary" routerLink="/addNewProduct">
+              Ajouter Produit
+            </button>
+            <button mat-raised-button color="primary" routerLink="/listProducts">
+              Liste Produits
+            </button>
+          </mat-toolbar-row>
+        
       </ul>
       <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Connecter</button>
       <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Déconnecter</button>
     </div>
   </div>
+
+</nav>--> 
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="border-bottom: 1px solid #edeff1; background-color: white !important;">
+  <div class="container">
+  <a class="navbar-brand" href="/home">Vente Miel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <input  style="width: 500px;border-radius: 8px; background-color: #f4f5f7; "class="form-control me-3 " type="search"   placeholder=" Rechercher un produit" aria-label="Search">
+      </ul>
+      
+    </div>
+    <form class="d-flex">         
+            <a class="nav-link active me-3" href="#" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+                  </svg>Mon Compte
+            </a>
+             <a class="nav-link active me-3" aria-current="page" href="https://www.jumia.com.tn/cart/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                  <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                </svg> Panier</a>
+                <button *ngIf="! isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Connecter</button>
+      <button *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()" >Déconnecter</button>
+   
+                 
+    </form>
+
+  </div>
 </nav>
+<!--deuxième navbar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style=" border-bottom: 1px solid #edeff1; background-color: white !important;">
+  <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent1">   
+  <form class="d-flex d-md-flex d-block flex-row mx-md-auto mx-0">
+          <ul class="navbar-nav   mx-auto mb-2 mb-lg-0">
+                <li class="nav-item p-1 mx-2" >
+                  <a class="nav-link active" aria-current="page" routerLink="/home">Accueil</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/about">A propos</a>
+                </li>
+                <li class="nav-item p-1 mx-2" *ngIf="userService.roleMatch(['ADMIN'])">
+                  <a class="nav-link active" aria-current="page" routerLink="/orders">Commandes</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/admin"
+                  *ngIf="userService.roleMatch(['ADMIN'])"
+                  >Admin Dashboard</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/user"
+                  *ngIf="userService.roleMatch(['CLIENT'])">Dashboard Client</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/addNewProduct"
+                  *ngIf="userService.roleMatch(['ADMIN'])">Ajouter Produit</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/listProducts"
+                  *ngIf="userService.roleMatch(['ADMIN'])">Liste Produit</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/cart"
+                  *ngIf="userService.roleMatch(['CLIENT'])">Carte</a>
+                </li>
+                <li class="nav-item p-1 mx-2">
+                  <a class="nav-link active" aria-current="page" routerLink="/myOrders"
+                  *ngIf="userService.roleMatch(['CLIENT'])"> Mes commandes</a>
+                </li>
+                              
+          </ul>        
+      </form>
+      </div>
+  
+    </div>
+  </nav>

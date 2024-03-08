@@ -1,0 +1,49 @@
+<div class="container  mt-5">
+  <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color">
+    <mat-button-toggle value="All" (click)="getAllOrdersForAdmin('All')">Tout</mat-button-toggle>
+    <mat-button-toggle value="placée" (click)="getAllOrdersForAdmin('placée')">Placée</mat-button-toggle>
+    <mat-button-toggle value="Livrée" (click)="getAllOrdersForAdmin('Livrée')">Livrée</mat-button-toggle>
+  </mat-button-toggle-group>
+  
+    <table mat-table [dataSource]="myOrderDetails" class="mat-elevation-z8 mt-3">        
+        <ng-container matColumnDef="Id">
+          <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.orderId}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="ProductName">
+          <mat-header-cell *matHeaderCellDef> Produit </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.product.nom}} </mat-cell>
+        </ng-container>
+      
+        <ng-container matColumnDef="Name">
+          <mat-header-cell *matHeaderCellDef> Nom Client </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.user.nom}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="Adress">
+            <mat-header-cell *matHeaderCellDef> Adresse </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.user.addresse}} </mat-cell>
+          </ng-container>
+        
+          <ng-container matColumnDef="ContactNumber">
+            <mat-header-cell *matHeaderCellDef> Numéro de téléphone </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.user.telephone}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Status">
+            <mat-header-cell *matHeaderCellDef> Etat </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.orderStatus}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+                <button *ngIf="element.orderStatus!=='Livrée'" mat-raised-button color="primary" (click)="markAsDelivered(element.orderId)">
+                    Marquer livrée
+                </button>
+            </mat-cell>
+          </ng-container>
+
+          
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </table>   
+</div>

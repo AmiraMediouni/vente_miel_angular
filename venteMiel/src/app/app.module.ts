@@ -33,6 +33,12 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
 import { ProductViewDetailsComponent } from './product-view-details/product-view-details.component';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { CartComponent } from './cart/cart.component';
+import { HeaderClientComponent } from './header-client/header-client.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AproposComponent } from './apropos/apropos.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 
 
@@ -53,7 +59,12 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     BuyProductComponent,
     ProductViewDetailsComponent,
     OrderConfirmationComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    CartComponent,
+    HeaderClientComponent,
+    MyOrdersComponent,
+    AproposComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +78,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatGridListModule, MatTableModule,MatDialogModule
+    MatGridListModule, MatTableModule,MatDialogModule,MatButtonToggleModule
   ],
   providers: [ AuthGuard,
     {

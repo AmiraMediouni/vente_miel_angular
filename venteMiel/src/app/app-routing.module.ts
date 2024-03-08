@@ -14,10 +14,15 @@ import { BuyProductComponent } from './buy-product/buy-product.component';
 import { BuyProductResolverService } from './_services/buy-product-resolver.service';
 import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { CartComponent } from './cart/cart.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { AproposComponent } from './apropos/apropos.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'about', component: AproposComponent },
   { path: 'admin', component: AdminComponent, canActivate:[AuthGuard], data:{roles:['ADMIN']} },
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['CLIENT']} },
   { path: 'login', component: LoginComponent },
@@ -39,7 +44,13 @@ const routes: Routes = [
   { path: 'orderConfirm', component: OrderConfirmationComponent , canActivate:[AuthGuard], data:{roles:['CLIENT']}
 },
 { path: 'register', component: RegisterUserComponent
- }
+ },
+ { path: 'cart', component: CartComponent , canActivate:[AuthGuard], data:{roles:['CLIENT']}
+},
+{ path: 'myOrders', component: MyOrdersComponent , canActivate:[AuthGuard], data:{roles:['CLIENT']}
+},
+{ path: 'orders', component: OrderDetailsComponent , canActivate:[AuthGuard], data:{roles:['ADMIN']}
+}
 ];
 
 @NgModule({

@@ -5,5 +5,6 @@ export interface OrderDetails{
     fullName:string,
     fullAddress:string,
     contactNumber:string,
-    commandeQuantiteList:OrderQuantity[];
+    commandeQuantiteList:OrderQuantity[]
+    
 }

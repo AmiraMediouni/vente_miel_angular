@@ -28,9 +28,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if(token){
       req = this.addToken(req, token);
-    }
-   
-    
+    } 
 
     return next.handle(req).pipe(
         catchError(
